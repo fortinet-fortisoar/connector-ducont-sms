@@ -1,0 +1,195 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "b054f69d-7237-44c5-930a-7fa45d495654",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Ducont SMS - 1.0.0",
+      "description": "The WCF Restful Service - Push SMS supports single and bulk messages request with parameterized or customized message.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Ducont",
+        "ducont-sms"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "17ae6e8c-1b7d-41c0-b943-f90b93a01924",
+          "collection": "/api/3/workflow_collections/b054f69d-7237-44c5-930a-7fa45d495654",
+          "triggerLimit": null,
+          "description": "",
+          "name": "Push SMS",
+          "tag": "#Ducont SMS",
+          "recordTags": [
+            "Ducont",
+            "ducont-sms"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/764bfd33-68eb-4b5c-b039-176e1dd65e51",
+          "steps": [
+            {
+              "uuid": "764bfd33-68eb-4b5c-b039-176e1dd65e51",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "9962a488-ad14-4168-a45a-e54ff63ceef8",
+                "title": "Ducont SMS: Push SMS",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "56e90d8d-e974-47aa-a057-6ec4c6b097c9",
+              "@type": "WorkflowStep",
+              "name": "Push SMS",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Ducont SMS",
+                "config": "''",
+                "params": {
+                  "message_id": "",
+                  "priority": null,
+                  "recipients": "",
+                  "validity_period": "7200",
+                  "language_id": "EN",
+                  "confirm_delivery": "false",
+                  "body": null
+                },
+                "version": "1.0.0",
+                "connector": "ducont-sms",
+                "operation": "push_sms",
+                "operationTitle": "Push SMS",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "8a05f39d-03e9-4cfd-9c2f-dce795a976c3",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Push SMS",
+              "sourceStep": "/api/3/workflow_steps/764bfd33-68eb-4b5c-b039-176e1dd65e51",
+              "targetStep": "/api/3/workflow_steps/56e90d8d-e974-47aa-a057-6ec4c6b097c9"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b13d9259-4d13-49c0-a0c8-f7a686585d4b",
+          "collection": "/api/3/workflow_collections/b054f69d-7237-44c5-930a-7fa45d495654",
+          "triggerLimit": null,
+          "description": "",
+          "name": "Push SMS SUB",
+          "tag": "#Ducont SMS",
+          "recordTags": [
+            "Ducont",
+            "ducont-sms"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/81029777-eafa-4045-ade0-6449d7719fc9",
+          "steps": [
+            {
+              "uuid": "81029777-eafa-4045-ade0-6449d7719fc9",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "8346a346-d7a1-494d-9596-64ce09465c62",
+                "title": "Ducont SMS: Push SMS SUB",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "6e5e9a59-83af-4ec3-a51f-8cb96a25ad48",
+              "@type": "WorkflowStep",
+              "name": "Push SMS SUB",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Ducont SMS",
+                "config": "''",
+                "params": {
+                  "message_id": "",
+                  "priority": null,
+                  "recipients": "",
+                  "validity_period": "7200",
+                  "language_id": "EN",
+                  "confirm_delivery": "false",
+                  "body": null
+                },
+                "version": "1.0.0",
+                "connector": "ducont-sms",
+                "operation": "push_sms_sub",
+                "operationTitle": "Push SMS SUB",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d3aed8c2-8dfe-4112-ac1a-7fd97c7c7c73",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Push SMS SUB",
+              "sourceStep": "/api/3/workflow_steps/81029777-eafa-4045-ade0-6449d7719fc9",
+              "targetStep": "/api/3/workflow_steps/6e5e9a59-83af-4ec3-a51f-8cb96a25ad48"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
