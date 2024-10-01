@@ -62,11 +62,11 @@
               "uuid": "56e90d8d-e974-47aa-a057-6ec4c6b097c9",
               "@type": "WorkflowStep",
               "name": "Push SMS",
-              "description": null,
+              "description": "Send a message to one or more recipients through the Ducont SMS service using the specified input parameters.",
               "status": null,
               "arguments": {
                 "name": "Ducont SMS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "message_id": "",
                   "priority": null,
@@ -106,7 +106,7 @@
           "uuid": "b13d9259-4d13-49c0-a0c8-f7a686585d4b",
           "collection": "/api/3/workflow_collections/b054f69d-7237-44c5-930a-7fa45d495654",
           "triggerLimit": null,
-          "description": "",
+          "description": "Send subscription-based SMS messages through the Ducont SMS service.",
           "name": "Push SMS SUB",
           "tag": "#Ducont SMS",
           "recordTags": [
@@ -154,7 +154,7 @@
               "status": null,
               "arguments": {
                 "name": "Ducont SMS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "message_id": "",
                   "priority": null,

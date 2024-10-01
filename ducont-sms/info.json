@@ -1,417 +1,404 @@
 {
-    "name": "ducont-sms",
-    "version": "1.0.0",
-    "label": "Ducont SMS",
-    "description": "The WCF Restful Service - Push SMS supports single and bulk messages request with parameterized or customized message.",
-    "publisher": "spryIQ.co",
-    "icon_small_name": "small.png",
-    "icon_large_name": "large.png",
-    "category": "Communication and Coordination",
-    "configuration": {
-        "fields": [
-            {
-                "title": "Server URL",
+  "name": "ducont-sms",
+  "version": "1.0.0",
+  "label": "Ducont SMS",
+  "description": "The WCF Restful Service - Push SMS supports single and bulk messages request with parameterized or customized message.",
+  "publisher": "spryIQ.co",
+  "contributor": "Jitesh Rathod",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "category": "Communication and Coordination",
+  "cs_compatible": true,
+  "cs_approved": false,
+  "help_online": "https://github.com/fortinet-fortisoar/connector-ducont-sms/blob/release/1.0.0/docs/DucontSMSConnectorDoc.md",
+  "vendor_version": null,
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "http://www.ducont.ae",
+        "placeholder": "E.g.: http://www.ducont.ae or www.ducont.ae",
+        "tooltip": "Specify the URL of the Ducont SMS server to connect and perform automated operations.",
+        "description": "Specify the URL of the Ducont SMS server to connect and perform automated operations."
+      },
+      {
+        "title": "User Id",
+        "type": "text",
+        "name": "user_id",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "placeholder": "Enter User ID (Maximum 50 characters).",
+        "tooltip": "Specify the user id of the Ducont SMS server to connect and perform automated operations.",
+        "description": "Specify the user id of the Ducont SMS server to connect and perform automated operations."
+      },
+      {
+        "title": "Password",
+        "type": "password",
+        "name": "password",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "placeholder": "Enter Password (Maximum 50 characters).",
+        "tooltip": "Specify the password of the Ducont SMS server to connect and perform automated operations.",
+        "description": "Specify the password of the Ducont SMS server to connect and perform automated operations."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "push_sms",
+      "title": "Push SMS",
+      "description": "Send a message to one or more recipients through the Ducont SMS service using the specified input parameters.",
+      "category": "investigation",
+      "annotation": "push_sms",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Recipient Mobile Numbers",
+          "type": "text",
+          "name": "recipients",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Enter comma-separated mobile numbers. eg: 971xxxxxxxxx,971xxxxxxxxx",
+          "tooltip": "Specify the CSV list of mobile number of the user to whom you want to send the message.",
+          "description": "Specify the CSV list of mobile number of the user to whom you want to send the message."
+        },
+        {
+          "title": "Body",
+          "type": "textarea",
+          "name": "body",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "tooltip": "Specifies the content of the SMS message being sent.",
+          "description": "Specifies the content of the SMS message being sent."
+        },
+        {
+          "title": "Sender ID",
+          "type": "text",
+          "name": "sender_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Specify a custom identifier that will be displayed as the sender of the SMS message.",
+          "description": "Specify a custom identifier that will be displayed as the sender of the SMS message."
+        },
+        {
+          "title": "Message ID",
+          "type": "text",
+          "name": "message_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "tooltip": "Specify a unique identifier assigned to each SMS message sent through the Ducont SMS service.",
+          "description": "Specify a unique identifier assigned to each SMS message sent through the Ducont SMS service."
+        },
+        {
+          "title": "Priority",
+          "type": "select",
+          "name": "priority",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "tooltip": "Select the priority level of the SMS message being sent through the Ducont SMS service",
+          "description": "Select the priority level of the SMS message being sent through the Ducont SMS service",
+          "options": [
+            "Highest",
+            "High",
+            "Medium",
+            "Low",
+            "Lowest"
+          ]
+        },
+        {
+          "title": "Channel ID",
+          "type": "text",
+          "name": "channel_id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a communication channel through which the SMS message is sent.",
+          "description": "Specify a communication channel through which the SMS message is sent."
+        },
+        {
+          "title": "Template ID",
+          "type": "text",
+          "name": "template_id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Specify a predefined message template for the SMS being sent through the Ducont SMS service.",
+          "description": "Specify a predefined message template for the SMS being sent through the Ducont SMS service."
+        },
+        {
+          "title": "Template Variables",
+          "type": "json",
+          "name": "template_variables",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "E.g. [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
+          "tooltip": "Example format: [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
+          "description": "Specify the template variables of the Ducont SMS."
+        },
+        {
+          "title": "Validity Period",
+          "type": "integer",
+          "name": "validity_period",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "7200",
+          "tooltip": "Specifies the duration for which the SMS message remains valid for delivery after it has been sent. Default is 7200",
+          "description": "Specifies the duration for which the SMS message remains valid for delivery after it has been sent. Default is 7200"
+        },
+        {
+          "title": "Language ID",
+          "type": "text",
+          "name": "language_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "EN",
+          "tooltip": "Specifies the language in which the SMS message should be sent. Default is EN.",
+          "description": "Specifies the language in which the SMS message should be sent. Default is EN."
+        },
+        {
+          "title": "Confirm Delivery",
+          "type": "select",
+          "name": "confirm_delivery",
+          "description": "Specifies whether the sender wishes to receive a confirmation of the message's delivery status.",
+          "tooltip": "Specifies whether the sender wishes to receive a confirmation of the message's delivery status.",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "false",
+          "options": [
+            "true",
+            "false"
+          ],
+          "onchange": {
+            "true": [
+              {
+                "title": "Status Callback URL",
                 "type": "text",
-                "name": "server_url",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": "http://www.ducont.ae",
-                "placeholder": "E.g.: http://www.ducont.ae or www.ducont.ae",
-                "tooltip": "Specify the URL of the Ducont SMS server to connect and perform automated operations.",
-                "description":"Specify the URL of the Ducont SMS server to connect and perform automated operations."
-            },
-            {
-                "title": "User Id",
-                "type": "text",
-                "name": "user_id",
+                "name": "status_callback_url",
                 "required": true,
                 "visible": true,
                 "editable": true,
                 "value": "",
-                "placeholder": "Enter User ID (Maximum 50 characters).",
-                "tooltip": "Specify the user id of the Ducont SMS server to connect and perform automated operations.",
-                "description":"Specify the user id of the Ducont SMS server to connect and perform automated operations."
-            },
-            {
-                "title": "Password",
-                "type": "password",
-                "name": "password",
+                "tooltip": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages.",
+                "description": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages."
+              }
+            ],
+            "false": [
+              {
+                "title": "Status Callback URL",
+                "type": "text",
+                "name": "status_callback_url",
+                "required": false,
+                "visible": false,
+                "editable": true,
+                "value": "",
+                "tooltip": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages.",
+                "description": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages."
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": [
+        {
+          "Status": "",
+          "Message": ""
+        }
+      ],
+      "open": false
+    },
+    {
+      "operation": "push_sms_sub",
+      "title": "Push SMS SUB",
+      "description": "Send subscription-based SMS messages through the Ducont SMS service.",
+      "category": "investigation",
+      "annotation": "push_sms_sub",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Recipient Mobile Numbers",
+          "type": "text",
+          "name": "recipients",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Enter comma-separated mobile numbers. eg: 971xxxxxxxxx,971xxxxxxxxx",
+          "tooltip": "Specify the CSV list of mobile number of the user to whom you want to send the message.",
+          "description": "Specify the CSV list of mobile number of the user to whom you want to send the message."
+        },
+        {
+          "title": "Body",
+          "type": "textarea",
+          "name": "body",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "tooltip": "Specifies the content of the SMS message being sent.",
+          "description": "Specifies the content of the SMS message being sent."
+        },
+        {
+          "title": "Channel ID",
+          "type": "text",
+          "name": "channel_id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a communication channel through which the SMS message is sent.",
+          "description": "Specify a communication channel through which the SMS message is sent."
+        },
+        {
+          "title": "Sender ID",
+          "type": "text",
+          "name": "sender_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a custom identifier that will be displayed as the sender of the SMS message.",
+          "description": "Specify a custom identifier that will be displayed as the sender of the SMS message."
+        },
+        {
+          "title": "Message ID",
+          "type": "text",
+          "name": "message_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "tooltip": "Specify a unique identifier assigned to each SMS message sent through the Ducont SMS service.",
+          "description": "Specify a unique identifier assigned to each SMS message sent through the Ducont SMS service."
+        },
+        {
+          "title": "Priority",
+          "type": "select",
+          "name": "priority",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "tooltip": "Select the priority level of the SMS message being sent through the Ducont SMS service",
+          "description": "Select the priority level of the SMS message being sent through the Ducont SMS service",
+          "options": [
+            "Highest",
+            "High",
+            "Medium",
+            "Low",
+            "Lowest"
+          ]
+        },
+        {
+          "title": "Template ID",
+          "type": "text",
+          "name": "template_id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Specify a predefined message template for the SMS being sent through the Ducont SMS service.",
+          "description": "Specify a predefined message template for the SMS being sent through the Ducont SMS service."
+        },
+        {
+          "title": "Template Variables",
+          "type": "textarea",
+          "name": "template_variables",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "E.g. [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
+          "tooltip": "Example format: [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
+          "description": "Specify the template variables of the Ducont SMS."
+        },
+        {
+          "title": "Validity Period",
+          "type": "text",
+          "name": "validity_period",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "7200",
+          "tooltip": "Specifies the duration for which the SMS message remains valid for delivery after it has been sent. Default is 7200",
+          "description": "Specifies the duration for which the SMS message remains valid for delivery after it has been sent. Default is 7200"
+        },
+        {
+          "title": "Language ID",
+          "type": "text",
+          "name": "language_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "EN",
+          "tooltip": "Specifies the language in which the SMS message should be sent. Default is EN.",
+          "description": "Specifies the language in which the SMS message should be sent. Default is EN."
+        },
+        {
+          "title": "Confirm Delivery",
+          "type": "select",
+          "name": "confirm_delivery",
+          "description": "Specifies whether the sender wishes to receive a confirmation of the message's delivery status.",
+          "tooltip": "Specifies whether the sender wishes to receive a confirmation of the message's delivery status.",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "false",
+          "options": [
+            "true",
+            "false"
+          ],
+          "onchange": {
+            "true": [
+              {
+                "title": "Status Callback URL",
+                "type": "text",
+                "name": "status_callback_url",
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "placeholder": "Enter Password (Maximum 50 characters).",
-                "tooltip": "Specify the password of the Ducont SMS server to connect and perform automated operations.",
-                "description":"Specify the password of the Ducont SMS server to connect and perform automated operations."
-            }
-        ] 
-    },
-    "operations": [
-        {
-            "operation": "push_sms",
-            "title": "Push SMS",
-            "description": "",
-            "category": "utility",
-            "annotation": "push_sms",
-            "enabled": true,
-            "parameters": [
-                {
-                    "title": "Channel Id",
-                    "type": "text",
-                    "name": "channel_id",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "tooltip": "Enter channel ID (Maximum 50 characters)",
-                    "placeholder":"Enter channel ID (Maximum 50 characters)",
-                    "description":"Specify the channel id of the Ducont SMS server."
-                },
-                {
-                    "title": "Sender Id",
-                    "type": "text",
-                    "name": "sender_id",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "tooltip": "Enter sender ID (Maximum 11 characters).",
-                    "placeholder":"Enter sender ID (Maximum 11 characters).",
-                    "description":"Specify the sender id of the Ducont SMS."
-                },
-                {
-                    "title": "Message Id",
-                    "type": "text",
-                    "name": "message_id",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "tooltip": "Enter a unique message ID (Maximum 50 characters), e.g. a121-b222-c323-d123e",
-                    "placeholder": "Enter unique message ID (Maximum 50 characters) e.g. a121-b222-c323-d123e",
-                    "description":"Specify the message ID of the Ducont SMS."
-                },
-                {
-                    "title": "Priority",
-                    "type": "select",
-                    "name": "priority",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "tooltip": "Priority of the message.",
-                    "options": [
-                        "Highest",
-                        "High",
-                        "Medium",
-                        "Low",
-                        "Lowest"
-                    ]
-                },
-                {
-                    "title": "Recipients",
-                    "type": "text",
-                    "name": "recipients",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "placeholder": "Enter comma-separated mobile numbers. eg: 971xxxxxxxxx,971xxxxxxxxx",
-                    "value": "",
-                    "tooltip": "Enter comma-separated  of mobile numbers.",
-                    "description":"Specify comma separated recipients in case of multiple ."
-                },
-                {
-                    "title": "Template Id",
-                    "type": "text",
-                    "name": "template_id",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "tooltip": "Enter template ID (Maximum 50 characters).",
-                    "placeholder":"Enter template ID (Maximum 50 characters).",
-                    "description":"Specify the template ID of the Ducont SMS."
-                },
-                {
-                    "title": "Template Variables",
-                    "type": "textarea",
-                    "name": "template_variables",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "placeholder": "E.g. [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
-                    "tooltip": "Example format: [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
-                    "description":"Specify the template variables of the Ducont SMS."
-                },
-                {
-                    "title": "Validity Period",
-                    "type": "text",
-                    "name": "validity_period",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "7200",
-                    "placeholder": "Enter validity period (Maximum 20 characters). Default is 7200",
-                    "tooltip": "Enter validity period (Maximum 20 characters). Default is 7200",
-                    "description":"Specify the validity period of the Ducont SMS."
-                },
-                {
-                    "title": "Language Id",
-                    "type": "text",
-                    "name": "language_id",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "EN",
-                    "placeholder": "Enter language ID (Maximum 50 characters). Default is EN",
-                    "tooltip": "Enter language ID (Maximum 50 characters). Default is EN",
-                    "description":"Specify the language ID of the Ducont SMS."
-                },
-                {
-                    "title": "Confirm Delivery",
-                    "type": "select",
-                    "name": "confirm_delivery",
-                    "description":"This flag (true or false) will be used if Call backURL is required",
-                    "tooltip": "This flag (true or false) will be used if Call backURL is required",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "false",
-                    "options": [
-                        "true",
-                        "false"
-                    ],
-                    "onchange": {
-                        "true": [
-                            {
-                                "title": "Status Callback URL",
-                                "type": "text",
-                                "name": "status_callback_url",
-                                "required": true,
-                                "visible": true,
-                                "editable": true,
-                                "value": "",
-                                "tooltip": "Enter Callback URL."
-                            }
-                        ],
-                        "false": [
-                            {
-                                "title": "Status Callback URL",
-                                "type": "text",
-                                "name": "status_callback_url",
-                                "required": false,
-                                "visible": false,
-                                "editable": true,
-                                "value": "",
-                                "tooltip": "Enter Callback URL."
-                            }
-                        ]
-                    }
-                },
-                {
-                    "title": "Body",
-                    "type": "textarea",
-                    "name": "body",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "placeholder": "Enter text body",
-                    "tooltip": "Input field for the main text content",
-                    "description":"Specify the message body of the Ducont SMS."
-                }
+                "value": "",
+                "tooltip": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages.",
+                "description": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages."
+              }
             ],
-            "output_schema": [
-                {
-                    "Status": "01",
-                    "Message": "Message sent successfully."
-                }
-            ],
-            "open": false
-        },
-        {
-            "operation": "push_sms_sub",
-            "title": "Push SMS SUB",
-            "description": "",
-            "category": "utility",
-            "annotation": "push_sms_sub",
-            "enabled": true,
-            "parameters": [
-                {
-                    "title": "Channel Id",
-                    "type": "text",
-                    "name": "channel_id",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "tooltip": "Enter channel ID (Maximum 50 characters)",
-                    "placeholder":"Enter channel ID (Maximum 50 characters)",
-                    "description":"Specify the channel id of the Ducont SMS server."
-                },
-                {
-                    "title": "Sender Id",
-                    "type": "text",
-                    "name": "sender_id",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "tooltip": "Enter sender ID (Maximum 11 characters).",
-                    "placeholder":"Enter sender ID (Maximum 11 characters).",
-                    "description":"Specify the sender id of the Ducont SMS."
-                },
-                {
-                    "title": "Message Id",
-                    "type": "text",
-                    "name": "message_id",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "tooltip": "Enter a unique message ID (Maximum 50 characters), e.g. a121-b222-c323-d123e",
-                    "placeholder": "Enter unique message ID (Maximum 50 characters) e.g. a121-b222-c323-d123e",
-                    "description":"Specify the message ID of the Ducont SMS."
-                },
-                {
-                    "title": "Priority",
-                    "type": "select",
-                    "name": "priority",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "tooltip": "Priority of the message.",
-                    "options": [
-                        "Highest",
-                        "High",
-                        "Medium",
-                        "Low",
-                        "Lowest"
-                    ]
-                },
-                {
-                    "title": "Recipients",
-                    "type": "text",
-                    "name": "recipients",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "placeholder": "Enter comma-separated mobile numbers. eg: 971xxxxxxxxx,971xxxxxxxxx",
-                    "value": "",
-                    "tooltip": "Enter comma-separated  of mobile numbers.",
-                    "description":"Specify comma separated recipients in case of multiple ."
-                },
-                {
-                    "title": "Template Id",
-                    "type": "text",
-                    "name": "template_id",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "tooltip": "Enter template ID (Maximum 50 characters).",
-                    "placeholder":"Enter template ID (Maximum 50 characters).",
-                    "description":"Specify the template ID of the Ducont SMS."
-                },
-                {
-                    "title": "Template Variables",
-                    "type": "textarea",
-                    "name": "template_variables",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "placeholder": "E.g. [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
-                    "tooltip": "Example format: [{'varName': '', 'varValue': ''}, {'varName': '', 'varValue': ''}]",
-                    "description":"Specify the template variables of the Ducont SMS."
-                },
-                {
-                    "title": "Validity Period",
-                    "type": "text",
-                    "name": "validity_period",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "7200",
-                    "placeholder": "Enter validity period (Maximum 20 characters). Default is 7200",
-                    "tooltip": "Enter validity period (Maximum 20 characters). Default is 7200",
-                    "description":"Specify the validity period of the Ducont SMS."
-                },
-                {
-                    "title": "Language Id",
-                    "type": "text",
-                    "name": "language_id",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "EN",
-                    "placeholder": "Enter language ID (Maximum 50 characters). Default is EN",
-                    "tooltip": "Enter language ID (Maximum 50 characters). Default is EN",
-                    "description":"Specify the language ID of the Ducont SMS."
-                },
-                {
-                    "title": "Confirm Delivery",
-                    "type": "select",
-                    "name": "confirm_delivery",
-                    "description":"This flag (true or false) will be used if Call backURL is required",
-                    "tooltip": "This flag (true or false) will be used if Call backURL is required",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "false",
-                    "options": [
-                        "true",
-                        "false"
-                    ],
-                    "onchange": {
-                        "true": [
-                            {
-                                "title": "Status Callback URL",
-                                "type": "text",
-                                "name": "status_callback_url",
-                                "required": true,
-                                "visible": true,
-                                "editable": true,
-                                "value": "",
-                                "tooltip": "Enter Callback URL."
-                            }
-                        ],
-                        "false": [
-                            {
-                                "title": "Status Callback URL",
-                                "type": "text",
-                                "name": "status_callback_url",
-                                "required": false,
-                                "visible": false,
-                                "editable": true,
-                                "value": "",
-                                "tooltip": "Enter Callback URL."
-                            }
-                        ]
-                    }
-                },
-                {
-                    "title": "Body",
-                    "type": "textarea",
-                    "name": "body",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "placeholder": "Enter text body",
-                    "tooltip": "Input field for the main text content",
-                    "description":"Specify the message body of the Ducont SMS."
-                }
-            ],
-            "output_schema": [
-                {
-                    "Status": "01",
-                    "Message": "Message sent successfully."
-                }
-            ],
-            "open": false
+            "false": [
+              {
+                "title": "Status Callback URL",
+                "type": "text",
+                "name": "status_callback_url",
+                "required": false,
+                "visible": false,
+                "editable": true,
+                "value": "",
+                "tooltip": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages.",
+                "description": "Specify a URL endpoint where the SMS service can send a notifications regarding the delivery status of sent messages."
+              }
+            ]
+          }
         }
-    ],
-    "active": true,
-    "cs_compatible": true,
-    "cs_approved": false,
-    "system": false,
-    "icon_small": "images/small_icon.png",
-    "icon_large": "images/large_icon.png",
-    "help_online": "https://github.com/jitesh-spryiq/connector-ducont-sms/blob/develop/docs/DucontSMSConnectorDoc.md",
-    "vendor_version": null
+      ],
+      "output_schema": [
+        {
+          "Status": "",
+          "Message": ""
+        }
+      ],
+      "open": false
+    }
+  ]
 }
