@@ -23,14 +23,14 @@ class Ducont(object):
 
     def make_api_call(self, endpoint=None, method='GET', headers=None, data=None):
         url = self.server_url + endpoint
-        logger.debug('Final URL to make REST call: %s', url)
+        logger.debug('API Endpoint URL: %s', url)
         if headers:
             self.headers.update(headers)
         logger.debug('Making a %s request with headers: %s', method, self.headers)
         try:
             response = requests.request(method, url, headers=self.headers, data=data)
             logger.debug('Received response with status code: %d', response.status_code)
-            if response.status_code == 200:
+            if response.ok:
                 try:
                     response_data = response.json()
                     status = response_data.get('status', 'Success')
