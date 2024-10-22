@@ -21,3 +21,7 @@ class Ducont(Connector):
         except Exception as err:
             logger.error('An exception occurred {}'.format(err))
             raise ConnectorError('{}'.format(err))
+
+    # unavailability of the API documentation health check functionality not implemented
+    def check_health(self, config):
+        pass
