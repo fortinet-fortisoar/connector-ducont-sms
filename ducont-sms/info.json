@@ -27,7 +27,7 @@
         "description": "Specify the URL of the Ducont SMS server to connect and perform automated operations."
       },
       {
-        "title": "User Id",
+        "title": "User ID",
         "type": "text",
         "name": "user_id",
         "required": true,

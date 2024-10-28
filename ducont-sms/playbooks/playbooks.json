@@ -18,7 +18,7 @@
           "uuid": "17ae6e8c-1b7d-41c0-b943-f90b93a01924",
           "collection": "/api/3/workflow_collections/b054f69d-7237-44c5-930a-7fa45d495654",
           "triggerLimit": null,
-          "description": "",
+          "description": "Send a message to one or more recipients through the Ducont SMS service using the specified input parameters.",
           "name": "Push SMS",
           "tag": "#Ducont SMS",
           "recordTags": [
